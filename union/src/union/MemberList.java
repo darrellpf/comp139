@@ -10,8 +10,22 @@ public class MemberList {
 	}
 
 	public void add(Worker who) {
+		if(nextFreeToFill == allWorkers.length) {
+			expand();
+		}
+		
 		allWorkers[nextFreeToFill] = who;
 		nextFreeToFill++;
+	}
+	
+	private void expand() {
+		Worker[] newSpace = new Worker[2 * allWorkers.length];
+		
+		for(int i = 0; i < allWorkers.length; i++) {
+			newSpace[i] = allWorkers[i];
+		}
+		
+		allWorkers = newSpace;
 	}
 
 	public Worker get(int position) {
@@ -45,5 +59,18 @@ public class MemberList {
 		}
 
 		nextFreeToFill--;
+		allWorkers[nextFreeToFill] = null;
+	}
+	
+	@Override
+	public String toString() {
+		String result = "";
+		
+		for(int i = 0; i < nextFreeToFill; i++) {
+			result += allWorkers[i].toString();
+		}
+		
+		return result;
+		
 	}
 }
