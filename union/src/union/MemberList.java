@@ -1,15 +1,17 @@
 package union;
 
 public class MemberList {
-	private Worker[] allWorkers;
+	private static final int STARTING_CAPACITY = 10;
+	
+	private Object[] allWorkers;
 	private int nextFreeToFill;
 
 	public MemberList() {
-		allWorkers = new Worker[10];
+		allWorkers = new Object[STARTING_CAPACITY];
 		nextFreeToFill = 0;
 	}
 
-	public void add(Worker who) {
+	public void add(Object who) {
 		if(nextFreeToFill == allWorkers.length) {
 			expand();
 		}
@@ -19,7 +21,7 @@ public class MemberList {
 	}
 	
 	private void expand() {
-		Worker[] newSpace = new Worker[2 * allWorkers.length];
+		Object[] newSpace = new Object[2 * allWorkers.length];
 		
 		for(int i = 0; i < allWorkers.length; i++) {
 			newSpace[i] = allWorkers[i];
@@ -28,7 +30,7 @@ public class MemberList {
 		allWorkers = newSpace;
 	}
 
-	public Worker get(int position) {
+	public Object get(int position) {
 		return allWorkers[position];
 	}
 
@@ -67,7 +69,9 @@ public class MemberList {
 		String result = "";
 		
 		for(int i = 0; i < nextFreeToFill; i++) {
+			result += "";
 			result += allWorkers[i].toString();
+			result += " ]";
 		}
 		
 		return result;
