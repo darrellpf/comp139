@@ -3,7 +3,7 @@ package chainedlist;
 public class MemberListDriver {
 
 	public static void main(String[] args) {
-		GenericList<Worker> union = new ChainedList<Worker>();
+		ChainedList<Worker> union = new ChainedList<Worker>();
 		
 		Worker fred = new Worker("Fred", "President");		
 		union.add(fred);
@@ -28,6 +28,12 @@ public class MemberListDriver {
 		union.remove(1);
 		for(int i = 0; i < union.size(); i++) {
 			Worker who = union.get(i);
+			System.out.println(who.getFirstName());
+		}
+		
+		ChainedList<Worker>.Cursor<Worker> current = union.getCursor();
+		while(current.hasNext()) {
+			Worker who = current.next();
 			System.out.println(who.getFirstName());
 		}
 		

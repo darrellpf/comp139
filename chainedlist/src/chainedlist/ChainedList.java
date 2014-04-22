@@ -49,6 +49,12 @@ public class ChainedList<E> implements GenericList<E> {
 	@Override
 	public void remove(int oneToRemovePosition) {
 		Node current = startOfChain;
+		
+		if(oneToRemovePosition == 0) {
+			startOfChain = startOfChain.next;
+			itemCount--;
+			return;
+		}
 
 		for(int i = 0; i < oneToRemovePosition - 1; i++) {
 			current = current.next;		
@@ -61,6 +67,46 @@ public class ChainedList<E> implements GenericList<E> {
 		oneBefore.next = oneAfter;
 		itemCount--;
 	}
+	
+	@Override
+	public String toString() {
+		String result = "";
+		
+		for(Node current = startOfChain; current != null; current = current.next){
+				result += current + " ";
+		}
+		
+		return result;
+	}
+	
+	/*@Override
+	public String toString() {
+		String result = "";
+		
+		Node current = startOfChain;
+		
+		while(current != null) {
+			result += current + " ";
+			current = current.next;
+		}
+		
+		return result;
+	}*/
+	
+/*	@Override
+	public String toString() {
+		String result = "";
+		
+		Node current = startOfChain;
+		
+		for(int i = 0; i < itemCount; i++) {
+			result += current + " ";
+			current = current.next;
+		}
+		
+		
+		return result;
+	}*/
 
 	private class Node {
 		private E storedItem;
@@ -70,6 +116,32 @@ public class ChainedList<E> implements GenericList<E> {
 			storedItem = item;
 			next = null;
 		}
+		
+		@Override
+		public String toString() {
+			return storedItem.toString();
+		}
 	}
-
+	
+	public Cursor getCursor() {
+		return new Cursor();
+	}
+	
+	public class Cursor<E> {
+		private Node current;
+		
+		public Cursor() {
+			current = startOfChain;
+		}
+		
+		public boolean hasNext() {
+			return current != null;
+		}
+		
+		public E next() {
+			E itemToReturn = (E)current.storedItem;
+			current = current.next;
+			return itemToReturn;
+		}
+	}
 }
