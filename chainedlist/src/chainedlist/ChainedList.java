@@ -1,6 +1,8 @@
 package chainedlist;
 
-public class ChainedList<E> implements GenericList<E> {
+import java.util.Iterator;
+
+public class ChainedList<E> implements GenericList<E>, Iterable<E> {
 
 	private Node startOfChain;
 	private int itemCount;
@@ -123,11 +125,11 @@ public class ChainedList<E> implements GenericList<E> {
 		}
 	}
 	
-	public Cursor getCursor() {
+	public Cursor iterator() {
 		return new Cursor();
 	}
 	
-	public class Cursor<E> {
+	public class Cursor implements Iterator<E> {
 		private Node current;
 		
 		public Cursor() {
@@ -139,9 +141,14 @@ public class ChainedList<E> implements GenericList<E> {
 		}
 		
 		public E next() {
-			E itemToReturn = (E)current.storedItem;
+			E itemToReturn = current.storedItem;
 			current = current.next;
 			return itemToReturn;
+		}
+
+		@Override
+		public void remove() {
+			
 		}
 	}
 }
