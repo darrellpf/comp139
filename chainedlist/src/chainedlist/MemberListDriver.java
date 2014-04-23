@@ -1,5 +1,7 @@
 package chainedlist;
 
+import java.util.Iterator;
+
 public class MemberListDriver {
 
 	public static void main(String[] args) {
@@ -31,9 +33,13 @@ public class MemberListDriver {
 			System.out.println(who.getFirstName());
 		}
 		
-		ChainedList<Worker>.Cursor<Worker> current = union.getCursor();
+		Iterator<Worker> current = union.iterator();
 		while(current.hasNext()) {
 			Worker who = current.next();
+			System.out.println(who.getFirstName());
+		}
+		
+		for(Worker who : union) {
 			System.out.println(who.getFirstName());
 		}
 		
