@@ -28,14 +28,15 @@ public class StackArray<E> implements StackInterface<E>{
 
 	@Override
 	public E peek() {
-		// TODO Auto-generated method stub
-		return null;
+		int lastFilledSlot = nextFreeToFill - 1;
+		E itemToReturn = allItems[lastFilledSlot];
+
+		return itemToReturn;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return nextFreeToFill;
 	}
 
 }
