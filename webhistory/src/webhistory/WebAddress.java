@@ -10,4 +10,5 @@ public class WebAddress {
 	public String getUrl() {
 		return url;
 	}
+
 }

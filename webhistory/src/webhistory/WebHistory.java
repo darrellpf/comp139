@@ -12,4 +12,29 @@ public class WebHistory {
 		back = new Stack<>();
 		currentURL = new WebAddress("");
 	}
+	
+	public WebAddress getCurrentURL() {
+		return currentURL;
+	}
+	
+	
+	public void hitsEnter(WebAddress addr) {
+		back.push(currentURL);
+		currentURL = addr;
+		forward.clear();
+		
+	}
+	
+	public void hitsBackButton() {
+		forward.push(currentURL);
+		currentURL = back.pop();
+	}
+	
+	public int getForwardSize() {
+		return forward.size();
+	}
+	
+	public int getBackwardSize() {
+		return back.size();
+	}
 }
