@@ -22,14 +22,14 @@ public class QueueArrayTest {
 
 	@Test
 	public void intialized() {
-		QueueInterface<Worker> aQueue = new QueueArray<Worker>();
+		QueueInterface<Worker> aQueue = new QueueLinked<Worker>();
 
 		assertTrue(aQueue.size() == 0);
 	}
 	
 	@Test
 	public void enqueuedequeueOne() {
-		QueueInterface<Worker> aQueue = new QueueArray<Worker>();
+		QueueInterface<Worker> aQueue = new QueueLinked<Worker>();
 		
 		aQueue.enqueue(aWorker);
 		assertTrue(aQueue.size() == 1);
@@ -42,7 +42,7 @@ public class QueueArrayTest {
 	
 	@Test
 	public void enqueuedequeueTwo() {
-		QueueInterface<Worker> aQueue = new QueueArray<Worker>();
+		QueueInterface<Worker> aQueue = new QueueLinked<Worker>();
 		
 		aQueue.enqueue(aWorker);
 		assertTrue(aQueue.size() == 1);
@@ -60,7 +60,7 @@ public class QueueArrayTest {
 	
 	@Test
 	public void enqueuedequeueMany() {
-		QueueInterface<Worker> aQueue = new QueueArray<Worker>();
+		QueueInterface<Worker> aQueue = new QueueLinked<Worker>();
 		
 		aQueue.enqueue(aWorker);
 		assertTrue(aQueue.size() == 1);
