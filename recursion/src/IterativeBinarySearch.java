@@ -5,15 +5,14 @@ public class IterativeBinarySearch {
 
 		int numberToFind = 91;
 
-		int position = findNumber(orderedNumbers, numberToFind);
+		int position = findNumber(orderedNumbers, numberToFind, 0, orderedNumbers.length - 1);
 
+		System.out.println("Position is " + position);
 	}
 
-	public static int findNumber(int[] orderedNumbers, int numberToFind) {
-		int leftPosition = 0;
-		int rightPosition = orderedNumbers.length - 1;
+	public static int findNumber(int[] orderedNumbers, int numberToFind, int leftPosition, int rightPosition) {
 
-		while (leftPosition < rightPosition) {
+		while (leftPosition <= rightPosition) {
 
 			int middlePosition = (rightPosition + leftPosition) / 2;
 
