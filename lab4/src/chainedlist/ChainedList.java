@@ -132,8 +132,44 @@ public class ChainedList<E> implements GenericList<E>, Iterable<E> {
 	}
 	
 	public ChainedList<E> removeAdjacentDuplicates() {
+		ChainedList<E> duplicates = new ChainedList<>();
 
-		return null;
+		if (itemCount < 2) {
+			return duplicates;
+		}
+
+		Node oneBefore = startOfChain;
+		Node oneAfter = oneBefore.next;
+
+		Node dummyHead = new Node(null); // duplicates on dummy head node
+		Node duplicatesEnd = dummyHead;
+
+		while (oneAfter != null) {
+			if (oneAfter.equals(oneBefore)) {
+				
+				duplicatesEnd.next = oneAfter;
+				duplicatesEnd = duplicatesEnd.next;
+
+				oneBefore.next = oneAfter.next; // skip duplicate
+
+				oneAfter = oneBefore.next;
+
+				itemCount--;
+				duplicates.itemCount++;
+				
+				continue;
+			}
+
+			oneBefore = oneBefore.next;
+			oneAfter = oneAfter.next;
+		}
+
+		dummyHead = dummyHead.next; // remove dummy node
+		duplicates.startOfChain = dummyHead;
+
+		duplicatesEnd.next = null;
+
+		return duplicates;
 	}
 	
 	public Cursor iterator() {
