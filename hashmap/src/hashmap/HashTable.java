@@ -1,11 +1,13 @@
 package hashmap;
 
+import java.lang.reflect.Array;
+
 public class HashTable<K, V> {
 	
 	Node [] table;
 	
 	public HashTable() {
-		table = (Node []) new Object[100];
+		table = (Node[]) Array.newInstance(Node.class, 10);
 	}
 	
 	public void add(K key, V value) {
@@ -15,6 +17,7 @@ public class HashTable<K, V> {
 		int magic = key.hashCode();
 		int tableSlot = magic % table.length;
 		
+		aNode.next = table[tableSlot];
 		table[tableSlot] = aNode;
 	}
 	
