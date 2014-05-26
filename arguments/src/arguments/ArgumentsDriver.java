@@ -12,6 +12,12 @@ public class ArgumentsDriver {
 		{ "name", "" },
 		};
 	
+	static String[][] processedArguments = { 
+		{ "siz", "10" },
+		{ "height", "20" },
+		{ "name", "Joe" },
+		};
+	
 	public static void main(String[] args) {
 		new ArgumentsDriver();
 	}
@@ -27,10 +33,21 @@ public class ArgumentsDriver {
 			
 			nameTable.put(key, value);
 		}
-
-		nameTable.put("name", "Joe");
 		
-		nameTable.put("siz", "2000");
+		// The arguments string has somehow been processed.
+
+		for(String [] row : processedArguments) {
+			String value = row[1];
+			String key = row[0];
+			
+			if(nameTable.containsKey(key) == false) {
+				System.out.println("Invalid argument: " + key);
+				continue;
+			}
+			
+			nameTable.put(key, value);
+			
+		}
 
 		for(Map.Entry<String, String> anEntry : nameTable.entrySet()) {
 			System.out.println(anEntry);
