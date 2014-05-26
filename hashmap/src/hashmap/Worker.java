@@ -13,6 +13,13 @@ public class Worker {
 	public int hashCode() {
 		return sin;
 	}
+	
+	@Override
+	public boolean equals(Object what) {
+		Worker other = (Worker) what;
+		
+		return sin == other.sin;
+	}
 
 
 	public String getFirstName() {
