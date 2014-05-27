@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 
 
 public class Worker implements Comparable<Worker>{
@@ -20,5 +22,13 @@ public class Worker implements Comparable<Worker>{
 	@Override
 	public int compareTo(Worker other) {
 		return firstName.compareTo(other.firstName);
+	}
+	
+	public Comparator<Worker> byTitle() {
+		return new Comparator<Worker>() {
+			public int compare(Worker a, Worker b) {
+				return a.title.compareTo(b.title);
+			}
+		};
 	}
 }

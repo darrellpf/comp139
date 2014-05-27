@@ -25,6 +25,8 @@ public class TreeDriver {
 		for(Worker who : workers) {
 			System.out.println(who.getFirstName());			
 		}
+		
+		workers.forEach(null);
 	}
 
 }

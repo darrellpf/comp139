@@ -1,13 +1,26 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 public class Tree<E extends Comparable<E>> implements Iterable<E> {
 
 	private TreeNode root;
+	private Comparator<E> comp;
 
 	public Tree() {
 		root = null;
+		comp = new Comparator<E>() {
+			public int compare(E a, E b) {
+				return a.compareTo(b);
+			}
+		};
+		
+	}
+	
+	public Tree(Comparator<E> inComparator) {
+		root = null;
+		comp = inComparator;
 	}
 
 	public void add(E item) {
@@ -24,7 +37,7 @@ public class Tree<E extends Comparable<E>> implements Iterable<E> {
 	
 	private void addNodeInternal(TreeNode anyRoot, TreeNode addNode) {
 
-		int comparison = addNode.compareTo(anyRoot);
+		int comparison = comp.compare(addNode.item, anyRoot.item);
 		
 		if(comparison == 0) {
 			return;
@@ -48,6 +61,10 @@ public class Tree<E extends Comparable<E>> implements Iterable<E> {
 		}
 	}
 	
+	public void forEach(Instruction doStuff) {
+		
+	}
+	
 	public E search(E looksLike) {
 		if(root == null) {
 			return null;
@@ -62,7 +79,7 @@ public class Tree<E extends Comparable<E>> implements Iterable<E> {
 			return null;
 		}
 		
-		int comparison = looksLike.compareTo(root);
+		int comparison = comp.compare(root.item, looksLike.item);
 		if(comparison == 0) {
 			return root.item;
 		}
