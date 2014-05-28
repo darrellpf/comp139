@@ -1,4 +1,4 @@
 
-public interface Instruction {
-	public void execute();
+public interface Instruction<E> {
+	public void execute(E thing);
 }

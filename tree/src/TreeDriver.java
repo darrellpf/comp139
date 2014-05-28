@@ -13,20 +13,12 @@ public class TreeDriver {
 		workers.add(new Worker("s", "s"));
 		
 		workers.add(new Worker("c", "c"));
+						
+		Printer<Worker> aPrinter = new Printer<>();
 		
-		Worker foundWorker = workers.search(new Worker("c", "x"));
+		workers.forEach(aPrinter);
 		
-		System.out.println("found: " + foundWorker.getFirstName());
-		
-		System.out.println();
-		System.out.println("Alphabetical order");
-		System.out.println();
-
-		for(Worker who : workers) {
-			System.out.println(who.getFirstName());			
-		}
-		
-		workers.forEach(null);
+		System.out.println(aPrinter.itemCount);
 	}
 
 }

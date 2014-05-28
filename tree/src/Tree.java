@@ -61,8 +61,19 @@ public class Tree<E extends Comparable<E>> implements Iterable<E> {
 		}
 	}
 	
-	public void forEach(Instruction doStuff) {
+	public void forEach(Instruction<E> doStuff) {
 		
+		forEachInternal(doStuff, root);
+	}
+	
+	private void forEachInternal(Instruction<E> doStuff, TreeNode aNode) {
+		if(aNode == null) {
+			return;
+		}
+		
+		forEachInternal(doStuff, aNode.leftSide);
+		doStuff.execute(aNode.item);
+		forEachInternal(doStuff, aNode.rightSide);
 	}
 	
 	public E search(E looksLike) {
