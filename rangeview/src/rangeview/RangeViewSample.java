@@ -23,7 +23,7 @@ public class RangeViewSample {
 		
 		// Can't change an asList view
 		
-		names.add(new Person("f"));
+		//names.add(new Person("f"));
 		
 		names.set(5, new Person("f"));
 		
@@ -46,6 +46,8 @@ public class RangeViewSample {
 			Person who = names.get(i);
 			who.setName(value);
 		}
+		
+		// names.add(new Person("f"));
 	}
 
 }
