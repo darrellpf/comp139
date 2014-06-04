@@ -1,5 +1,6 @@
 package rangeview;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class RangeViewSample {
 	}
 	
 	public RangeViewSample() {
-		List<Person> names = Arrays.asList(nameData);
+		List<Person> names = new ArrayList<>(Arrays.asList(nameData));
 		
 		// Can't change an asList view
 		
