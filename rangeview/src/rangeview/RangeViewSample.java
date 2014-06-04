@@ -21,8 +21,9 @@ public class RangeViewSample {
 	public RangeViewSample() {
 		List<Person> names = Arrays.asList(nameData);
 		
-		// Can't change a view
-		// names.add(new Person("f"));
+		// Can't change an asList view
+		
+		names.add(new Person("f"));
 		
 		names.set(5, new Person("f"));
 		
@@ -31,6 +32,7 @@ public class RangeViewSample {
 		System.out.println(names);
 		
 		List<Person> nameRange = names.subList(2, 4);
+		nameRange.set(0, new Person("start"));
 		
 		for(Person who : nameRange) {
 			who.setName("y");
