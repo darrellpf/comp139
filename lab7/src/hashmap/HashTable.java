@@ -79,8 +79,6 @@ public class HashTable<K, V> {
 			current = current.next;
 			previous = previous.next;
 		}
-		
-		return;
 	}
 	
 	public boolean containsValue(V value) {
