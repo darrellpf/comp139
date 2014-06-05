@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 
 public class HashTable<K, V> {
 
-	Node[] table;
+	private Node[] table;
 
 	public HashTable() {
 		table = (Node[]) Array.newInstance(Node.class, 10);
