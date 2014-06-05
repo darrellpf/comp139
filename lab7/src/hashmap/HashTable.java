@@ -84,9 +84,6 @@ public class HashTable<K, V> {
 	public boolean containsValue(V value) {
 		
 		for(Node aNode : table) {
-			if(aNode == null) {
-				continue;
-			}
 			
 			if(chainContainsValue(aNode, value) == true) {
 				return true;
