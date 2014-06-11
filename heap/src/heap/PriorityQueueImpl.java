@@ -17,7 +17,9 @@ public class PriorityQueueImpl<E extends Object & Comparable<E>> implements
 		allItems[nextEmptySlot] = item;
 		nextEmptySlot++;
 
-		workYourWayUp(nextEmptySlot - 1);
+		int lastFullPosition = nextEmptySlot - 1;
+		
+		workYourWayUp(lastFullPosition);
 
 	}
 
@@ -52,8 +54,11 @@ public class PriorityQueueImpl<E extends Object & Comparable<E>> implements
 	public E remove() {
 		E itemToReturn = allItems[0];
 
-		allItems[0] = allItems[nextEmptySlot - 1];
-		allItems[nextEmptySlot - 1] = null;
+		int lastFullPosition = nextEmptySlot - 1;
+		
+		allItems[0] = allItems[lastFullPosition];
+		allItems[lastFullPosition] = null;
+		
 		nextEmptySlot--;
 
 		workYourWayDown(0);
@@ -89,6 +94,7 @@ public class PriorityQueueImpl<E extends Object & Comparable<E>> implements
 		}
 
 		int smallestPosition = leftChildPosition;
+		
 		if (rightChild.compareTo(leftChild) < 0) {
 			smallestPosition = rightChildPosition;
 		}
@@ -129,8 +135,7 @@ public class PriorityQueueImpl<E extends Object & Comparable<E>> implements
 
 			@Override
 			public void remove() {
-				throw new UnsupportedOperationException("Remove not supported");
-				
+				throw new UnsupportedOperationException("Remove not supported");			
 			}
 
 		};
