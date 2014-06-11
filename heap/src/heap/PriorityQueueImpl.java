@@ -127,6 +127,12 @@ public class PriorityQueueImpl<E extends Object & Comparable<E>> implements
 				return item;
 			}
 
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException("Remove not supported");
+				
+			}
+
 		};
 	}
 
