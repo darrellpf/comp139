@@ -11,8 +11,7 @@ public class ScoreBoard {
 		return currentAttendance;
 	}
 	
-//	public synchronized void  tookATicket() {
-	public void  tookATicket() {
+	public void tookATicket() {
 		currentAttendance++;
 	}
 }
