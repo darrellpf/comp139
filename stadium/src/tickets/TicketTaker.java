@@ -17,6 +17,7 @@ public class TicketTaker extends Thread {
 		currentUniqueIdentifier++;
 	}
 	
+	@Override
 	public void run() {
 		for(int shiftNumber = 0; shiftNumber < SHIFTS; shiftNumber++) {
 			doOneShift();
